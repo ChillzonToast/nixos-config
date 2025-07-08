@@ -7,6 +7,7 @@
 	#User packages
 	home.packages = with pkgs; [
 		spotify
+		neofetch
 	];
 
 	programs.zsh = {
@@ -19,6 +20,9 @@
 			la = "ls -A";
 			".." = "cd ..";
 		};
+		initContent = "
+			neofetch
+		";
 	};
 
 	programs.kitty = {
