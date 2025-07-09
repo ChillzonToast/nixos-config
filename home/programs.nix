@@ -74,4 +74,5 @@
 		preload = [ "/home/ibilees/nixos-config/home/wallpaper.png" ];
 		wallpaper = [ ",/home/ibilees/nixos-config/home/wallpaper.png" ];
 	};
+
 }

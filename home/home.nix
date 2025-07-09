@@ -4,6 +4,8 @@
 	imports = [
 		./hyprland.nix
 		./programs.nix
+		./waybar.nix
+		./fonts.nix
 	];
 
 	home.username = "ibilees";
