@@ -7,6 +7,9 @@
 		neofetch
 		brightnessctl
 		inputs.zen-browser.packages."${system}".twilight
+		hyprpaper
+		waybar
+		wl-clipboard
 	];
 
 	programs.zsh = {
@@ -64,4 +67,11 @@
 		clean.extraArgs = "--keep-since 4d --keep 3";
 		flake = "/home/ibilees/nixos-config";
 	};	
+	
+	services.hyprpaper.enable = true;
+	services.hyprpaper.settings = {
+		ipc = "on";
+		preload = [ "/home/ibilees/nixos-config/home/wallpaper.png" ];
+		wallpaper = [ ",/home/ibilees/nixos-config/home/wallpaper.png" ];
+	};
 }
