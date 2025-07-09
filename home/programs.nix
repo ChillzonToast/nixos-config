@@ -10,6 +10,7 @@
 		hyprpaper
 		waybar
 		wl-clipboard
+		clipse
 	];
 
 	programs.zsh = {
@@ -43,7 +44,7 @@
 		};
 		themeFile = "gruvbox-dark";
 		settings = {
-			background_opacity = "1";
+			background_opacity = "0.9";
 		};
 	};
 
@@ -74,5 +75,7 @@
 		preload = [ "/home/ibilees/nixos-config/home/wallpaper.png" ];
 		wallpaper = [ ",/home/ibilees/nixos-config/home/wallpaper.png" ];
 	};
+	
+	services.clipse.enable = true;
 
 }

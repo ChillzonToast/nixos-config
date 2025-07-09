@@ -66,6 +66,9 @@
 				# --- Scroll Workspaces ---
 				"SUPER, mouse_down, workspace, e+1"
 				"SUPER, mouse_up, workspace, e-1"
+			
+				# --- Clipboard Clipse ---
+				"SUPER, V, exec, kitty --class clipse -e clipse"
 			];
 			
 			# Mouse binding
@@ -101,6 +104,11 @@
 				"10, name:10"
 			];
 		};
+		extraConfig = ''
+			windowrule = float, class:^(clipse)$
+			windowrule = size 622 652, class:^(clipse)$
+			windowrule = stayfocused, class:^(clipse)$
+		'';
 	};
 	xdg.enable = true;
 }
