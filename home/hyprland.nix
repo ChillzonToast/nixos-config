@@ -17,7 +17,7 @@
 
 				# --- Launch Applications ---
 				"SUPER, Return, exec, kitty"
-				"SUPER, B, exec, firefox"
+				"SUPER, B, exec, zen"
 
 				# --- Focus Windows ---
 				"SUPER, h, movefocus, l"

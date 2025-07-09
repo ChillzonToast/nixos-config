@@ -5,8 +5,8 @@
 	home.packages = with pkgs; [
 		spotify
 		neofetch
-		firefox
 		brightnessctl
+		inputs.zen-browser.packages."${system}".twilight
 	];
 
 	programs.zsh = {
