@@ -279,7 +279,7 @@
 			};
 
 			"custom/launcher" = {
-				format = " ";
+				format = " ";
 				on-click = "sh ~/.config/rofi/launchers/type-2/launcher.sh";
 				on-click-right = "killall rofi";
 			};
