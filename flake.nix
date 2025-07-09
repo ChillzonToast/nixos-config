@@ -20,7 +20,7 @@
 					{
 						home-manager.useGlobalPkgs = true;
 						home-manager.useUserPackages = true;
-						home-manager.users.ibilees = import ./home.nix;
+						home-manager.users.ibilees = import ./home/home.nix;
 					}
 				];
 			};
