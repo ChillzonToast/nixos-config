@@ -32,6 +32,8 @@
 		        RESET='%f'
 			
 			PROMPT="''${RED}[''${YELLOW}%n''${GREEN}@''${BLUE}%m''${RED}:''${PURPLE}%~''${RED}]''${RESET}$ "
+			bindkey "\e[1;5C" forward-word
+			bindkey "\e[1;5D" backward-word
 			neofetch
 		'';
 	};
