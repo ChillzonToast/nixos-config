@@ -35,7 +35,7 @@
 	programs.kitty = {
 		enable = true;
 		font = {
-			size = 10;
+			size = 12;
 			name = "JetBrains Mono";
 		};
 		themeFile = "gruvbox-dark";
