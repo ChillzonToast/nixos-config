@@ -8,6 +8,7 @@
 	home.packages = with pkgs; [
 		spotify
 		neofetch
+		firefox
 	];
 
 	programs.zsh = {
@@ -45,6 +46,23 @@
 		};
 	};
 	
+	wayland.windowManager.hyprland = {
+		enable = true;
+		settings = {
+			general = {
+				border_size = 2;
+				"col.active_border" = "rgb(235,219,178)";
+			};
+			bind = [
+				"SUPER, Q, killactive"
+				"SUPER, Return, exec, kitty"
+				"SUPER SHIFT, F, fullscreen"
+				"SUPER, B, exec, firefox"
+			];
+		};
+	};
+	xdg.enable = true;	
+
 	programs.git = {
 		enable = true;
 		userName = "Chillzontoast";
@@ -65,6 +83,8 @@
 	home.sessionVariables = {
 		TERMINAL = "kitty";
 	};
+	
+	programs.home-manager.enable = true;
 
 	home.stateVersion = "25.05";
 }

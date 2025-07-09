@@ -33,32 +33,31 @@
   nixpkgs.config.allowUnfree = true;
 
   # Set your time zone.
-  # time.timeZone = "Europe/Amsterdam";
+  time.timeZone = "Asia/Kolkata";
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
+  i18n.defaultLocale = "en_US.UTF-8";
   # console = {
   #   font = "Lat2-Terminus16";
   #   keyMap = "us";
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = false;
-
   #zsh
   programs.zsh.enable = true;
-
-  #pipewire
+  
+  # Enable sound - pipewire
+  security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    jack.enable = true;
   };
   
   #users
@@ -69,18 +68,29 @@
     shell = pkgs.zsh;
   };  
 
-  # TY auto-login
-  services.getty.autologinUser = "ibilees";
-
   # Hyprland
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
   };
 
+  # Display manager with autologin
+  services = {
+    displayManager.gdm = {
+      enable = true;
+      wayland = true;
+    };
+  };
+
+  # Autologin
+  services.displayManager.autoLogin = {
+	enable = true;
+	user = "ibilees";
+  };
+  services.displayManager.defaultSession = "hyprland";
+  
   #packages
   environment.systemPackages = with pkgs; [
-    firefox
     git
     vim
     wget
@@ -93,14 +103,6 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
-
-  # Enable sound.
-  services.pulseaudio.enable = false;
-  # OR
-  # services.pipewire = {
-  #   enable = true;
-  #   pulse.enable = true;
-  # };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
