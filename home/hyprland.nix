@@ -69,6 +69,10 @@
 			
 				# --- Clipboard Clipse ---
 				"SUPER, V, exec, kitty --class clipse -e clipse"
+
+				# --- Screenshot hyprshot ---
+				"SUPER, PRINT, exec, hyprshot -m output"
+				"SUPER SHIFT, PRINT, exec, hyprshot -m region"
 			];
 			
 			# Mouse binding
@@ -110,5 +114,19 @@
 			windowrule = stayfocused, class:^(clipse)$
 		'';
 	};
+	home.pointerCursor = {
+		enable = true;
+		package = pkgs.bibata-cursors;
+		name = "Bibata-Modern-Ice";
+		size = 24;
+
+		hyprcursor = {
+			enable = true;
+			size = config.home.pointerCursor.size;
+		};
+
+		x11.enable = true;
+	};
+
 	xdg.enable = true;
 }

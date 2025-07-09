@@ -11,6 +11,7 @@
 		waybar
 		wl-clipboard
 		clipse
+		hyprshot
 	];
 
 	programs.zsh = {
