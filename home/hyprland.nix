@@ -66,7 +66,10 @@
 				# --- Scroll Workspaces ---
 				"SUPER, mouse_down, workspace, e+1"
 				"SUPER, mouse_up, workspace, e-1"
-			
+
+				# --- App launcher ---
+				"SUPER, D, exec, tofi-drun | xargs hyprctl dispatch exec --"
+
 				# --- Clipboard Clipse ---
 				"SUPER, V, exec, kitty --class clipse -e clipse"
 
