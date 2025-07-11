@@ -18,6 +18,7 @@
 				# --- Launch Applications ---
 				"SUPER, Return, exec, kitty"
 				"SUPER, B, exec, zen"
+				"SUPER, Z, exec, zeditor"
 
 				# --- Focus Windows ---
 				"SUPER, h, movefocus, l"
@@ -112,11 +113,22 @@
 			];
 		};
 		extraConfig = ''
+
+			# Clipboard window config
 			windowrule = float, class:^(clipse)$
 			windowrule = size 622 652, class:^(clipse)$
 			windowrule = stayfocused, class:^(clipse)$
+			
+			# Touchpad inverse scrolling			
+			input{
+				touchpad {
+					natural_scroll = true;
+				}
+			}
 		'';
 	};
+	
+	# Bibata cursor
 	home.pointerCursor = {
 		enable = true;
 		package = pkgs.bibata-cursors;

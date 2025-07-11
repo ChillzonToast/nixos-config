@@ -4,15 +4,13 @@
 	#User packages
 	home.packages = with pkgs; [
 		spotify
-		neofetch
+		fastfetch
 		brightnessctl
 		inputs.zen-browser.packages."${system}".twilight
-		hyprpaper
 		waybar
 		wl-clipboard
-		clipse
 		hyprshot
-		tofi
+		zed-editor
 	];
 
 	programs.zsh = {
@@ -36,7 +34,7 @@
 			PROMPT="''${RED}[''${YELLOW}%n''${GREEN}@''${BLUE}%m''${RED}:''${PURPLE}%~''${RED}]''${RESET}$ "
 			bindkey "\e[1;5C" forward-word
 			bindkey "\e[1;5D" backward-word
-			neofetch
+			fastfetch
 		'';
 	};
 
@@ -98,4 +96,7 @@
 			corner-radius = 8;
 		};
 	};
+
+	# Zeditor
+	programs.zed-editor.enable = true;
 }
