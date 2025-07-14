@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 
-{	
+{
 	programs.waybar = {
 		enable = true;
 		systemd.enable = true;
@@ -221,7 +221,7 @@
 				tooltip = false;
 				format-wifi = "  {essid}";
 				format-ethernet = "";
-				on-click = "kitty -- nmtui";
+				on-click = "nm-connection-editor";
 			};
 
 			backlight = {

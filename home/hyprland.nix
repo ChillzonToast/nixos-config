@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 
-{	
+{
 	wayland.windowManager.hyprland = {
 		enable = true;
 		settings = {
@@ -78,14 +78,14 @@
 				"SUPER, PRINT, exec, hyprshot -m output"
 				"SUPER SHIFT, PRINT, exec, hyprshot -m region"
 			];
-			
+
 			# Mouse binding
 			bindm = [
 				# --- Resize with Mouse ---
 				"SUPER, mouse:272, movewindow"
 				"SUPER, mouse:273, resizewindow"
 			];
-			
+
 			# Trigger on press and repeat
 			bindel = [
 				# --- Volume Control ---
@@ -118,8 +118,11 @@
 			windowrule = float, class:^(clipse)$
 			windowrule = size 622 652, class:^(clipse)$
 			windowrule = stayfocused, class:^(clipse)$
-			
-			# Touchpad inverse scrolling			
+
+			# Network manager gui
+			windowrule = float, class:^(nm-connection-editor)$
+
+			# Touchpad inverse scrolling
 			input{
 				touchpad {
 					natural_scroll = true;
@@ -127,7 +130,7 @@
 			}
 		'';
 	};
-	
+
 	# Bibata cursor
 	home.pointerCursor = {
 		enable = true;

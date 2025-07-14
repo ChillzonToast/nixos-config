@@ -11,6 +11,7 @@
 		wl-clipboard
 		hyprshot
 		zed-editor
+		networkmanagerapplet
 	];
 
 	programs.zsh = {
@@ -30,7 +31,7 @@
 			BLUE='%F{109}'     # Gruvbox blue
 			PURPLE='%F{175}'   # Gruvbox purple
 		        RESET='%f'
-			
+
 			PROMPT="''${RED}[''${YELLOW}%n''${GREEN}@''${BLUE}%m''${RED}:''${PURPLE}%~''${RED}]''${RESET}$ "
 			bindkey "\e[1;5C" forward-word
 			bindkey "\e[1;5D" backward-word
@@ -54,7 +55,7 @@
 	home.sessionVariables = {
 		TERMINAL = "kitty";
 	};
-	
+
 	programs.git = {
 		enable = true;
 		userName = "Chillzontoast";
@@ -64,21 +65,21 @@
 			init.defaultBranch = "main";
 		};
 	};
-	
+
 	programs.nh = {
 		enable = true;
 		clean.enable = true;
 		clean.extraArgs = "--keep-since 4d --keep 3";
 		flake = "/home/ibilees/nixos-config";
-	};	
-	# Wallpaper	
+	};
+	# Wallpaper
 	services.hyprpaper.enable = true;
 	services.hyprpaper.settings = {
 		ipc = "on";
 		preload = [ "/home/ibilees/nixos-config/home/wallpaper.png" ];
 		wallpaper = [ ",/home/ibilees/nixos-config/home/wallpaper.png" ];
 	};
-	
+
 	# Clipboard
 	services.clipse.enable = true;
 
