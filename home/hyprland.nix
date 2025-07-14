@@ -111,6 +111,18 @@
 				"9, name:9"
 				"10, name:10"
 			];
+			animations = {
+        enabled = true;
+        bezier = "myBezier, 0.10, 0.9, 0.1, 1.0";
+        animation = [
+          "windows, 1, 2, myBezier"
+          "windowsOut, 1, 2, default, popin 80%"
+          "border, 1, 3, default"
+          "borderangle, 1, 2, default"
+          "fade, 1, 2, default"
+          "workspaces, 1, 1, default"
+        ];
+      };
 		};
 		extraConfig = ''
 
