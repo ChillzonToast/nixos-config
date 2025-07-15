@@ -19,6 +19,7 @@
 				"SUPER, Return, exec, kitty"
 				"SUPER, B, exec, zen"
 				"SUPER, Z, exec, zeditor"
+				"SUPER, E, exec, thunar"
 
 				# --- Focus Windows ---
 				"SUPER, h, movefocus, l"
