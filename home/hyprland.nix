@@ -8,7 +8,7 @@
 				border_size = 2;
 				"col.active_border" = "rgb(235,219,178)";
 			};
-			monitor = "eDP-1,preferred,auto,1.2";
+			monitor = "eDP-1,preferred,auto,1";
 			bind = [
 				# --- Window Management ---
 				"SUPER, Q, killactive"
