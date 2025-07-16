@@ -14,6 +14,8 @@
 		networkmanagerapplet
 		xfce.thunar
 		prismlauncher
+		obs-studio
+		vlc
 	];
 
 	programs.zsh = {

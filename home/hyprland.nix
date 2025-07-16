@@ -9,6 +9,9 @@
 				"col.active_border" = "rgb(235,219,178)";
 			};
 			monitor = "eDP-1,preferred,auto,1";
+			input = {
+			  kb_options = caps:swapescape;
+			};
 			bind = [
 				# --- Window Management ---
 				"SUPER, Q, killactive"
