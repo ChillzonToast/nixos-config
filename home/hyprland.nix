@@ -73,7 +73,8 @@
 				"SUPER, mouse_up, workspace, e-1"
 
 				# --- App launcher ---
-				"SUPER, D, exec, tofi-drun | xargs hyprctl dispatch exec --"
+				"SUPER, D, exec, rofi -show drun"
+				"SUPER SHIFT, D, exec, rofi -show run"
 
 				# --- Clipboard Clipse ---
 				"SUPER, V, exec, kitty --class clipse -e clipse"

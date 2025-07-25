@@ -16,6 +16,13 @@
 		prismlauncher
 		obs-studio
 		vlc
+		code-cursor
+		claude-code
+		pavucontrol
+		playerctl
+		light
+		btop
+
 	];
 
 	programs.zsh = {
@@ -88,18 +95,8 @@
 	services.clipse.enable = true;
 
 	# Application launcher
-	programs.tofi = {
+	programs.rofi = {
 		enable = true;
-		settings = {
-			text-color = "#ebdbb2";
-			prompt-color = "#fb4934";
-			selection-color = "#b8bb26";
-			background-color = "#3c3836";
-			border-width = 2;
-			outline-width = 0;
-			border-color = "#ebdbb2";
-			corner-radius = 8;
-		};
 	};
 
 	# Zeditor
