@@ -23,7 +23,7 @@
 		light
 		btop
 		cloudflare-warp
-		obsidian
+		appflowy
 	];
 
 	programs.zsh = {
