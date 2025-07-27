@@ -22,7 +22,8 @@
 		playerctl
 		light
 		btop
-
+		cloudflare-warp
+		obsidian
 	];
 
 	programs.zsh = {
@@ -102,6 +103,7 @@
 	# Zeditor
 	programs.zed-editor.enable = true;
 
+	#Dark mode
 	dconf.settings = {
       "org/gnome/desktop/background" = {
         picture-uri-dark = "file://${pkgs.nixos-artwork.wallpapers.nineish-dark-gray.src}";

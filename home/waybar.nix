@@ -282,6 +282,38 @@
         color: #161320;
         background: #a89984;
       }
+
+      #custom-warp {
+        margin-top: 6px;
+        margin-left: 8px;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-bottom: 0px;
+        border-radius: 10px;
+        transition: none;
+        color: #161320;
+        background: #458588;
+      }
+
+      #custom-warp.connected {
+        background: #689d6a;
+        color: #161320;
+      }
+
+      #custom-warp.connecting {
+        background: #d79921;
+        color: #161320;
+      }
+
+      #custom-warp.disconnected {
+        background: #cc241d;
+        color: #fbf1c7;
+      }
+
+      #custom-warp.error {
+        background: #fb4934;
+        color: #161320;
+      }
     '';
 
     settings = {
@@ -291,7 +323,7 @@
         height = 30;
         spacing = 0;
 
-        modules-left = [ "custom/launcher" "pulseaudio" "idle_inhibitor" "custom/suspend" "custom/poweroff" "mpris" ]; #"hyprland/window"
+        modules-left = [ "custom/launcher" "pulseaudio" "idle_inhibitor" "custom/suspend" "custom/poweroff" "custom/warp" "mpris" ]; #"hyprland/window"
         modules-center = [ "hyprland/workspaces" ];
         modules-right = [ "tray" "network" "memory" "cpu" "temperature#cpu" "temperature#gpu" "keyboard-state" "battery" "battery#bat2" "clock" ];
 
@@ -476,6 +508,59 @@
             default = ["" "" ""];
           };
           on-click = "pavucontrol";
+        };
+
+        "custom/warp" = let
+          warp-status = pkgs.writeShellScript "warp-status" ''
+            #!/bin/bash
+
+            # Get warp status
+            status=$(${pkgs.cloudflare-warp}/bin/warp-cli status 2>/dev/null | grep "Status update:" | cut -d: -f2 | xargs)
+
+            case "$status" in
+                "Connected")
+                    echo '{"text": "󰖂 VPN", "class": "connected", "tooltip": "Warp VPN: Connected"}'
+                    ;;
+                "Connecting")
+                    echo '{"text": "󰇘 VPN", "class": "connecting", "tooltip": "Warp VPN: Connecting..."}'
+                    ;;
+                "Disconnected")
+                    echo '{"text": " VPN", "class": "disconnected", "tooltip": "Warp VPN: Disconnected"}'
+                    ;;
+                *)
+                    echo '{"text": " VPN", "class": "error", "tooltip": "Warp VPN: Status unknown"}'
+                    ;;
+            esac
+          '';
+          warp-toggle = pkgs.writeShellScript "warp-toggle" ''
+            #!/bin/bash
+
+            # Get current warp status
+            status=$(${pkgs.cloudflare-warp}/bin/warp-cli status 2>/dev/null | grep "Status update:" | cut -d: -f2 | xargs)
+
+            case "$status" in
+                "Connected")
+                    ${pkgs.cloudflare-warp}/bin/warp-cli disconnect
+                    ;;
+                "Disconnected")
+                    ${pkgs.cloudflare-warp}/bin/warp-cli connect
+                    ;;
+                "Connecting")
+                    # If connecting, disconnect to cancel
+                    ${pkgs.cloudflare-warp}/bin/warp-cli disconnect
+                    ;;
+                *)
+                    # Try to connect if status is unknown
+                    ${pkgs.cloudflare-warp}/bin/warp-cli connect
+                    ;;
+            esac
+          '';
+        in {
+          return-type = "json";
+          exec = "${warp-status}";
+          on-click = "${warp-toggle}";
+          interval = 5;
+          tooltip = true;
         };
 
         mpris = {

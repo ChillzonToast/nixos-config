@@ -9,7 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
-  
+
   #enable flakes and nixf-command
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -22,12 +22,12 @@
   # boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  
+
   networking.hostName = "nixos"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
-  
+
   #enable all firmware with unfree license
   hardware.enableAllFirmware = true;
   nixpkgs.config.allowUnfree = true;
@@ -49,7 +49,7 @@
 
   #zsh
   programs.zsh.enable = true;
-  
+
   # Enable sound - pipewire
   security.rtkit.enable = true;
   services.pipewire = {
@@ -59,14 +59,14 @@
     pulse.enable = true;
     jack.enable = true;
   };
-  
+
   #users
   users.users.ibilees = {
     isNormalUser = true;
     description = "Ibinu Jaleel";
     extraGroups = [ "wheel" "networkmanager" ];
     shell = pkgs.zsh;
-  };  
+  };
 
   # Hyprland
   programs.hyprland = {
@@ -80,6 +80,7 @@
       enable = true;
       wayland = true;
     };
+    cloudflare-warp.enable = true;
   };
 
   # Autologin
@@ -88,7 +89,7 @@
 	user = "ibilees";
   };
   services.displayManager.defaultSession = "hyprland";
-  
+
   #packages
   environment.systemPackages = with pkgs; [
     git
@@ -171,4 +172,3 @@
   system.stateVersion = "25.05"; # Did you read the comment?
 
 }
-
