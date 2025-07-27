@@ -519,16 +519,16 @@
 
             case "$status" in
                 "Connected")
-                    echo '{"text": "󰖂 VPN", "class": "connected", "tooltip": "Warp VPN: Connected"}'
+                    echo '{"text": "󰖂 WARP", "class": "connected", "tooltip": "Warp VPN: Connected"}'
                     ;;
                 "Connecting")
-                    echo '{"text": "󰇘 VPN", "class": "connecting", "tooltip": "Warp VPN: Connecting..."}'
+                    echo '{"text": "󰇘 WARP", "class": "connecting", "tooltip": "Warp VPN: Connecting..."}'
                     ;;
                 "Disconnected")
-                    echo '{"text": " VPN", "class": "disconnected", "tooltip": "Warp VPN: Disconnected"}'
+                    echo '{"text": " WARP", "class": "disconnected", "tooltip": "Warp VPN: Disconnected"}'
                     ;;
                 *)
-                    echo '{"text": " VPN", "class": "error", "tooltip": "Warp VPN: Status unknown"}'
+                    echo '{"text": " WARP", "class": "error", "tooltip": "Warp VPN: Status unknown"}'
                     ;;
             esac
           '';
