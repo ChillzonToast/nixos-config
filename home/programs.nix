@@ -12,7 +12,18 @@
 		hyprshot
 		zed-editor
 		networkmanagerapplet
-		xfce.thunar
+
+		#Archive
+		file-roller
+    p7zip
+    unrar
+    unzip
+    zip
+    gzip
+    bzip2
+    xz
+
+		ranger
 		prismlauncher
 		obs-studio
 		vlc
@@ -24,6 +35,7 @@
 		btop
 		cloudflare-warp
 		appflowy
+		quartus-prime-lite
 	];
 
 	programs.zsh = {
@@ -66,6 +78,7 @@
 
 	home.sessionVariables = {
 		TERMINAL = "kitty";
+		LM_LICENSE_FILE = "/home/ibilees/questa_license.dat";
 	};
 
 	programs.git = {

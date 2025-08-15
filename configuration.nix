@@ -74,6 +74,17 @@
     xwayland.enable = true;
   };
 
+  #File manager
+  programs.thunar = {
+    enable = true;
+    plugins = with pkgs.xfce; [
+      thunar-archive-plugin
+      thunar-volman
+    ];
+  };
+  services.gvfs.enable = true; # Mount, trash, and other functionalities
+  services.tumbler.enable = true; # Thumbnail support for images
+
   # Display manager with autologin
   services = {
     displayManager.gdm = {
@@ -99,6 +110,15 @@
   ];
 
   fonts.fontconfig.enable = true;
+
+  #Flatpak applications
+  services.flatpak.enable = true;
+
+  systemd.services.flatpak-repo = {
+    wantedBy = [ "multi-user.target" ];
+    path = [ pkgs.flatpak ];
+    script = ''flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo'';
+  };
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
