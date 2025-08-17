@@ -36,6 +36,8 @@
 		cloudflare-warp
 		appflowy
 		quartus-prime-lite
+		qbittorrent
+		libreoffice
 	];
 
 	programs.zsh = {

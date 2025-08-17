@@ -30,7 +30,14 @@
 
   #enable all firmware with unfree license
   hardware.enableAllFirmware = true;
+  hardware.cpu.intel.updateMicrocode = true;
+  hardware.cpu.amd.updateMicrocode = true;
   nixpkgs.config.allowUnfree = true;
+
+  # Graphics drivers for different systems
+  hardware.graphics.enable = true;
+  hardware.nvidia.open = true; #open = false for older GTX 10xx series and below
+  services.xserver.videoDrivers = [ "intel" "amdgpu" "radeon" "nouveau" "nvidia" ];
 
   # Set your time zone.
   time.timeZone = "Asia/Kolkata";
