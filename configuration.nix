@@ -75,6 +75,8 @@
     shell = pkgs.zsh;
   };
 
+  security.sudo.wheelNeedsPassword = false;
+
   # Hyprland
   programs.hyprland = {
     enable = true;

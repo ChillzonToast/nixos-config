@@ -38,6 +38,9 @@
 		quartus-prime-lite
 		qbittorrent
 		libreoffice
+		wireguard-tools
+		tree
+		gcc
 	];
 
 	programs.zsh = {

@@ -314,6 +314,39 @@
         background: #fb4934;
         color: #161320;
       }
+
+      #custom-wireguard {
+        margin-top: 6px;
+        margin-left: 8px;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-bottom: 0px;
+        border-radius: 10px;
+        transition: none;
+        color: #161320;
+        background: #458588;
+      }
+
+      #custom-wireguard.connected {
+        background: #689d6a;
+        color: #161320;
+      }
+
+      #custom-wireguard.connecting {
+        background: #d79921;
+        color: #161320;
+      }
+
+      #custom-wireguard.disconnected {
+        background: #cc241d;
+        color: #fbf1c7;
+      }
+
+      #custom-wireguard.error {
+        background: #fb4934;
+        color: #161320;
+      }
+
     '';
 
     settings = {
@@ -323,7 +356,7 @@
         height = 30;
         spacing = 0;
 
-        modules-left = [ "custom/launcher" "pulseaudio" "idle_inhibitor" "custom/suspend" "custom/poweroff" "custom/warp" "mpris" ]; #"hyprland/window"
+        modules-left = [ "custom/launcher" "pulseaudio" "idle_inhibitor" "custom/suspend" "custom/poweroff" "custom/warp" "custom/wireguard" "mpris" ]; #"hyprland/window"
         modules-center = [ "hyprland/workspaces" ];
         modules-right = [ "tray" "network" "memory" "cpu" "temperature#cpu" "temperature#gpu" "keyboard-state" "battery" "battery#bat2" "clock" ];
 
@@ -559,6 +592,34 @@
           return-type = "json";
           exec = "${warp-status}";
           on-click = "${warp-toggle}";
+          interval = 5;
+          tooltip = true;
+        };
+
+        "custom/wireguard" = let
+          wg-status = pkgs.writeShellScript "wg-status" ''
+            #!/bin/bash
+            INTERFACE="wg0"
+            if ip link show "$INTERFACE" &>/dev/null; then
+                echo '{"text": "󰖂 WG", "class": "connected", "tooltip": "WireGuard: Connected"}'
+            else
+                echo '{"text": " WG", "class": "disconnected", "tooltip": "WireGuard: Disconnected"}'
+            fi
+          '';
+
+          wg-toggle = pkgs.writeShellScript "wg-toggle" ''
+            #!/bin/bash
+            INTERFACE="wg0"
+            if ip link show "$INTERFACE" &>/dev/null; then
+                wg-quick down wg0
+            else
+                wg-quick up wg0
+            fi
+          '';
+        in {
+          return-type = "json";
+          exec = "${wg-status}";
+          on-click = "${wg-toggle}";
           interval = 5;
           tooltip = true;
         };
