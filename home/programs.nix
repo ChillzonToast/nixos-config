@@ -41,6 +41,8 @@
 		wireguard-tools
 		tree
 		gcc
+		openjdk17
+		bottles
 	];
 
 	programs.zsh = {
