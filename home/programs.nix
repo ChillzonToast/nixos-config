@@ -43,6 +43,8 @@
 		gcc
 		openjdk17
 		bottles
+		qimgv
+		libnotify
 	];
 
 	programs.zsh = {
@@ -86,6 +88,7 @@
 	home.sessionVariables = {
 		TERMINAL = "kitty";
 		LM_LICENSE_FILE = "/home/ibilees/questa_license.dat";
+		MOZ_ENABLE_WAYLAND = "1";
 	};
 
 	programs.git = {

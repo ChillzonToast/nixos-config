@@ -6,6 +6,7 @@
 		./programs.nix
 		./waybar.nix
 		./fonts.nix
+		./mako.nix
 	];
 
 	home.username = "ibilees";
